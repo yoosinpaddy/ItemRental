@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "933398448413",
+    "firebase_url": "https://itemrental.firebaseio.com",
+    "project_id": "itemrental",
+    "storage_bucket": "itemrental.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:933398448413:android:d4d958a73a9cf4285839f4",
+        "android_client_info": {
+          "package_name": "yoosin.paddy.itemrental"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "933398448413-01gtn5hdvoo1hfbbvb3omdccv4ull75g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJSbbtvferKALMw7cU5etMstBnpruP3lk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "933398448413-01gtn5hdvoo1hfbbvb3omdccv4ull75g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Item Rental</string>
+
+    <string name="login">LOGIN</string>
+    <string name="Username">Email</string>
+    <string name="Password">Password</string>
+    <string name="forgot_your_password">Forgot your password ?</string>
+    <string name="go">GO</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="register">REGISTER</string>
+
+    <string name="hint_username">Enter a new username</string>
+    <string name="enter_group_name">Enter group name</string>
+    <string name="about">About</string>
+    <string name="title_activity_home">HomeActivity</string>
+</resources>

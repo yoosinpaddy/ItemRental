@@ -55,6 +55,9 @@
         </activity>
         <activity android:name=".activities.CreateProduct" />
         <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.ViewMyItemActivity" />
+        <activity android:name=".activities.ViewOrderItemActivity" />
+        <activity android:name=".activities.MyOrders" />
         <activity
             android:name=".messaging.MainActivity"
             android:label="@string/app_name"

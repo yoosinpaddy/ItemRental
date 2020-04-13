@@ -40,6 +40,7 @@ public class MyOrders extends AppCompatActivity {
         setContentView(R.layout.activity_my_orders);
         FirebaseApp.initializeApp(this);
         itemsAround=new ArrayList<>();
+        firebaseAuth=FirebaseAuth.getInstance();
         FirebaseUser user=firebaseAuth.getCurrentUser();
         databaseReference= FirebaseDatabase.getInstance().getReference().child("profiles/"+user.getUid()+"/order_items");
         itemsAdapter=new MyOrderItemsAdapter(MyOrders.this,itemsAround);

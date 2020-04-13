@@ -46,7 +46,7 @@ public class ViewOrderItemActivity extends AppCompatActivity {
     ImageView imageView,itemVote;
     FloatingActionButton message, edit;
     TextView title, amount, description, itemDistance;
-    MyItem item;
+    MyOrder item;
     Item item2;
     String idRoom;
     Spinner itemStatusSpinner;
@@ -60,6 +60,7 @@ public class ViewOrderItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_my_order);
         FirebaseApp.initializeApp(ViewOrderItemActivity.this);
+
         context = ViewOrderItemActivity.this;
         imageView = findViewById(R.id.productImage);
         itemVote = findViewById(R.id.itemVote);
@@ -72,7 +73,7 @@ public class ViewOrderItemActivity extends AppCompatActivity {
         itemStatusSpinner = findViewById(R.id.itemStatusSpinner);
         setUpSpinner();
         if (getIntent().getExtras() != null) {
-            item = (MyItem) getIntent().getSerializableExtra("item");
+            item = (MyOrder) getIntent().getSerializableExtra("item");
             if (item.getOwnerId().contentEquals(FirebaseAuth.getInstance().getUid())) {
                 edit.setVisibility(View.VISIBLE);
                 idRoom = item.getOwnerId().compareTo(FirebaseAuth.getInstance().getCurrentUser().getUid()) > 0 ? (StaticConfig.UID + item.getOwnerId()).hashCode() + "" : "" + (item.getOwnerId() + StaticConfig.UID).hashCode();
@@ -117,9 +118,9 @@ public class ViewOrderItemActivity extends AppCompatActivity {
     }
 
     private void setUpSpinner() {
-        itemStatusSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        itemStatusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
                         updatestatusItem("pending");
@@ -131,6 +132,12 @@ public class ViewOrderItemActivity extends AppCompatActivity {
                         updatestatusItem("returned");
                         break;
                 }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
     }
@@ -139,13 +146,13 @@ public class ViewOrderItemActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Saving...");
         progressDialog.show();
-        MyOrder order=new MyOrder(item);
+        MyOrder order=item;
         order.setStatus(status);
 
         DatabaseReference
-                reference= FirebaseDatabase.getInstance().getReference().child("profiles/"+order.getSecondPartyId()+"/requested_items"+item.getId());
+                reference= FirebaseDatabase.getInstance().getReference().child("profiles/"+order.getSecondPartyId()+"/requested_items/"+item.getId());
         DatabaseReference
-                reference2= FirebaseDatabase.getInstance().getReference().child("profiles/"+FirebaseAuth.getInstance().getUid()+"/order_items"+item.getId());
+                reference2= FirebaseDatabase.getInstance().getReference().child("profiles/"+FirebaseAuth.getInstance().getUid()+"/order_items/"+item.getId());
         reference2.setValue(order);
         reference.setValue(order).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

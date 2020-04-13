@@ -12,6 +12,11 @@
         android:title="@string/map"
         app:showAsAction="never" />
     <item
+        android:id="@+id/action_order"
+        android:orderInCategory="100"
+        android:title="@string/orders"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/account"

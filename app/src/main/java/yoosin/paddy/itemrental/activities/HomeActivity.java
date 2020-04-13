@@ -93,6 +93,9 @@ public class HomeActivity extends AppCompatActivity {
         if (item.getItemId()==R.id.action_myrequest){
             startActivity(new Intent(HomeActivity.this, MyRequest.class));
         }
+        if (item.getItemId()==R.id.action_order){
+            startActivity(new Intent(HomeActivity.this, MyOrders.class));
+        }
         return super.onOptionsItemSelected(item);
     }
 

@@ -18,6 +18,7 @@ import java.util.List;
 
 import yoosin.paddy.itemrental.R;
 import yoosin.paddy.itemrental.activities.ViewItemActivity;
+import yoosin.paddy.itemrental.activities.ViewOrderItemActivity;
 import yoosin.paddy.itemrental.models.MyItem;
 import yoosin.paddy.itemrental.models.MyOrder;
 
@@ -34,7 +35,7 @@ public class MyOrderItemsAdapter extends RecyclerView.Adapter<MyOrderItemsAdapte
     @NonNull
     @Override
     public myHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new myHolder(LayoutInflater.from(context).inflate(R.layout.item_product, parent, false));
+        return new myHolder(LayoutInflater.from(context).inflate(R.layout.my_item_product, parent, false));
     }
 
     @Override
@@ -76,7 +77,7 @@ public class MyOrderItemsAdapter extends RecyclerView.Adapter<MyOrderItemsAdapte
         }
     }
     private void itemClick(MyOrder item){
-        Intent intent = new Intent(context, ViewItemActivity.class);
+        Intent intent = new Intent(context, ViewOrderItemActivity.class);
         intent.putExtra("item",item);
         context.startActivity(intent);
     }

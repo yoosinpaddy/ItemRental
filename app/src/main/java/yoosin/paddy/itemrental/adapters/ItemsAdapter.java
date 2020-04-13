@@ -55,7 +55,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.myHolder> {
         holder.request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requestItem(h);
+                requestItem(h,v);
             }
         });
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -72,7 +72,10 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.myHolder> {
 
     }
 
-    private void requestItem(Item item) {
+    private void requestItem(Item item,View v) {
+        Button b= (Button)v;
+        b.setText("Reques...");
+        b.setClickable(false);
         FirebaseApp firebaseApp= FirebaseApp.initializeApp(context);
         MyOrder order=new MyOrder(item);
         order.setStatus("pending");
@@ -80,25 +83,28 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.myHolder> {
         order.setSecondPartyName(FirebaseAuth.getInstance(firebaseApp).getCurrentUser().getDisplayName());
 
         DatabaseReference
-                reference= FirebaseDatabase.getInstance().getReference().child("profiles/"+order.getSecondPartyId()+"/requested_items"+item.getId());
+                reference= FirebaseDatabase.getInstance().getReference().child("profiles/"+order.getSecondPartyId()+"/requested_items/"+item.getId());
         DatabaseReference
-                reference2= FirebaseDatabase.getInstance().getReference().child("profiles/"+ order.getOwnerId()+"/order_items"+item.getId());
+                reference2= FirebaseDatabase.getInstance().getReference().child("profiles/"+ order.getOwnerId()+"/order_items/"+item.getId());
         reference2.setValue(order);
         reference.setValue(order).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Log.e(TAG, "onSuccess: " );
+                b.setText("done");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Log.e(TAG, "onFailure: " );
+                b.setText("failed");
 
             }
         }).addOnCanceledListener(new OnCanceledListener() {
             @Override
             public void onCanceled() {
                 Log.e(TAG, "onCanceled: " );
+                b.setText("cancelled");
 
             }
         });

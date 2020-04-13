@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.m_activity_main);
 
+        initFirebase();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if(toolbar != null) {
             setSupportActionBar(toolbar);
@@ -59,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         floatButton = (FloatingActionButton) findViewById(R.id.fab);
-        initTab();
-        initFirebase();
     }
 
     private void initFirebase() {
@@ -73,6 +72,11 @@ public class MainActivity extends AppCompatActivity {
                 if (user != null) {
                     StaticConfig.UID = user.getUid();
                     Log.e(TAG, "onAuthStateChanged: "+StaticConfig.UID );
+
+                    MainActivity.this.finish();
+                    // User is signed in
+//                    startActivity(new Intent(MainActivity.this, yoosin.paddy.itemrental.activities.HomeActivity.class));
+                    initTab();
                 } else {
                     MainActivity.this.finish();
                     // User is signed in

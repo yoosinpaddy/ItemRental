@@ -402,7 +402,17 @@ public class FriendsFragment extends Fragment implements SwipeRefreshLayout.OnRe
                     getAllFriendInfo(0);
                 } else {
                     Log.e(TAG, "getListFriendUId: is null" );
-                    dialogFindAllFriend.dismiss();
+                    new CountDownTimer(700, 100) {
+                        public void onTick(long millisUntilFinished) {
+                        }
+                        public void onFinish() {
+                            try {
+                                dialogFindAllFriend.dismiss();
+                            } catch (Exception e) {
+                                //TODO: Fill in exception
+                            }
+                        }
+                    }.start();
                 }
             }
 

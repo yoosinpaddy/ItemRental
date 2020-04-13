@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dull"
+    tools:context=".activities.ViewItemActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/productImage"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_image_placeholder"
+            android:tint="@color/dull" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/itemName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/productImage"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_shape"
+            android:padding="8dp"
+            android:text="@string/laptop"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/itemName">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/itemPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_shape"
+            android:padding="8dp"
+            android:text="@string/_12"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:textSize="22sp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/itemDistance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_shape"
+            android:padding="8dp"
+            android:text="@string/distance"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/ItemDescription"
+            style="@style/Widget.MaterialComponents.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll1"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_shape"
+            android:elevation="4dp"
+            android:ellipsize="end"
+            android:gravity="left"
+            android:maxLines="12"
+            android:padding="8dp"
+            android:text="@string/lore_impsam"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/productImage"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="20dp"
+            android:layout_marginStart="@dimen/fab_margin"
+            android:layout_marginLeft="@dimen/fab_margin"
+            android:layout_marginTop="-20dp"
+            android:layout_marginBottom="@dimen/fab_margin"
+            android:background="@color/colorAccent"
+            android:backgroundTint="@color/colorAccent"
+            android:foregroundTint="@color/colorAccent"
+            android:padding="5dp"
+            android:onClick="sendMessage"
+            android:src="@drawable/ic_message"
+            app:backgroundTint="@color/white"
+            android:tint="@color/white"
+            tools:ignore="VectorDrawableCompat"
+            tools:targetApi="lollipop" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/productImage"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:onClick="editPost"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="20dp"
+            android:layout_marginStart="@dimen/fab_margin"
+            android:layout_marginLeft="@dimen/fab_margin"
+            android:layout_marginTop="-20dp"
+            android:layout_marginBottom="@dimen/fab_margin"
+            android:background="@color/colorAccent"
+            android:backgroundTint="@color/colorAccent"
+            android:foregroundTint="@color/colorAccent"
+            android:padding="5dp"
+            android:tint="@color/white"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_edit_black"
+            tools:ignore="VectorDrawableCompat"
+            tools:targetApi="lollipop" />
+
+        <Spinner
+            android:id="@+id/itemStatusSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/background_shape"
+            android:elevation="4dp"
+            android:padding="4dp"
+            android:text="@string/complete"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:entries="@array/order_status"
+
+            tools:targetApi="lollipop" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/itemStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/productImage"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="-16dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/background_shape"
+            android:backgroundTint="@color/colorAccent"
+            android:elevation="4dp"
+            android:padding="4dp"
+            android:text="@string/complete"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:targetApi="lollipop" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/itemVote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/productImage"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="241dp"
+            android:background="@color/colorAccent"
+            android:backgroundTint="@color/colorAccent"
+            android:elevation="4dp"
+            android:padding="0dp"
+            android:src="@drawable/ic_thumb_up_dull_24dp"
+            android:textColor="@color/white"
+            android:textOff="@string/vote"
+            android:textOn="@string/vote"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:targetApi="lollipop" />
+    </RelativeLayout>
+</ScrollView>
